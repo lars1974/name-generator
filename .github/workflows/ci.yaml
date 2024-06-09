@@ -36,30 +36,9 @@ jobs:
         env:
           JAVA_HOME: ${{ steps.setup-java.outputs.path }}
 
-  publish:
-    runs-on: ubuntu-latest
-    needs: build
-    if: github.ref_type == 'tag'
-
-    steps:
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
-
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: build/bin/native/releaseExecutable
-          asset_name: name-generator.exe
-          asset_content_type: application/zip
+          name: build-artifacts
+          path: build/bin/native/releaseExecutable/*
 
