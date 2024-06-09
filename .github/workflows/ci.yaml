@@ -27,7 +27,7 @@ jobs:
           java-version: '11'
 
       - name: Install Kotlin
-        uses: fwilhe2/setup-kotlin@v2
+        uses: fwilhe2/setup-kotlin@v0.9.0
         with:
           kotlin-version: '1.9.20-RC2'
 
