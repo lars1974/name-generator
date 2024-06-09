@@ -1,0 +1,3 @@
+myapp-feature/FOX-3812-this-is-my-branch-12345-23435
+
+ns-myapp-feature-fox-3812-this-is-my-branch-lon-23435-ce20a9
