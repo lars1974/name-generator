@@ -28,6 +28,11 @@ jobs:
         with:
           kotlin-version: '1.9.20-RC2'
 
+      - name: Build with Gradle
+        run: chmod 777 ./gradlew && ./gradlew build
+        env:
+          JAVA_HOME: ${{ steps.setup-java.outputs.path }}
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
